@@ -8,7 +8,11 @@ package kata5;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GraphicsConfiguration;
+import java.awt.HeadlessException;
 import java.awt.PopupMenu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -48,11 +52,27 @@ class MoneyCalculatorFrame extends JFrame{
 
     private JButton createCalculateButton() {
         JButton button = new JButton("Calculate");
+        button.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Calculating...");
+            }
+        });
         return button;
     }
 
+  
+
     private JButton createCanceButton() {
         JButton button = new JButton("Close");
+        button.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MoneyCalculatorFrame.this.dispose();
+            }
+        });
         return button;
     }
 
